@@ -5,15 +5,15 @@ on: [push]
 
 jobs:
     job_01:
-        name: build-front-end
+        name: front-end
         uses: ./.github/workflows/build-front-end.yml
         secrets: inherit
     job_02: 
-        name: build-front-end
+        name: back-end
         uses: ./.github/workflows/build-back-end.yml
     job_03: 
         name: display results
-        needs: job_01
+        needs: [job_01, job_02]
         runs-on: ubuntu-latest
         steps: 
             - name: upload artifact
