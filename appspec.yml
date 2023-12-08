@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files: 
+- source: client
+  destination: /var/www
+- source: deploy-scripts/webapi.service
+  destination: /etc/systemd/system
+
+hooks: 
+  BeforeInstall: 
+    - location: deploy-scripts/before_install.sh
+      timeout: 120
+      runas: root
+  

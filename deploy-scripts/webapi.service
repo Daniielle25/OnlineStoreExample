@@ -1,0 +1,11 @@
+[Unit]
+Description=.Net Online Store
+
+[Service]
+WorkingDirectory=/var/www/
+ExecStart=/usr/bin/dotnet /var/www/API.dll
+SyslogIdentifier=webapi
+Enviroment=ASPNETCORE_ENVIROMENT=Development
+
+[Install]
+WantedBy=multi-user.target
