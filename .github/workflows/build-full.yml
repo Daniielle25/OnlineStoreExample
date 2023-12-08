@@ -1,7 +1,7 @@
 # This workflow runs front & back end builds in parallel then merges them
 name: build and test 
 
-on: [push]
+on: [push, workflow_call]
 
 jobs:
     job_01:
