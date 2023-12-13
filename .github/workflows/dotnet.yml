@@ -28,4 +28,4 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: publish artifact 
-      run: dotnet Restore.sln /p:PublishUrl"../_build"
+      run: dotnet Restore.sln /p:PublishUrl="../_build"
