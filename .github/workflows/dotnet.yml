@@ -19,6 +19,8 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+    - name: Create new directory 
+      run: mkdir _build
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -26,4 +28,4 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: publish artifact 
-      run: dotnet publish --no-build -o ./published
+      run: dotnet Restore.snl /p:PublishUrl"../_build"
