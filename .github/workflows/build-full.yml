@@ -1,0 +1,24 @@
+# This workflow runs front & back end builds in parallel then merges them
+name: build and test 
+
+on: [push, workflow_call]
+
+jobs:
+    job_01:
+        name: front-end
+        uses: ./.github/workflows/build-front-end.yml
+        secrets: inherit
+    job_02: 
+        name: back-end
+        uses: ./.github/workflows/build-back-end.yml
+    job_03: 
+        name: display results
+        needs: [job_01, job_02]
+        runs-on: ubuntu-latest
+        steps: 
+            - name: upload artifact
+              uses: actions/upload-artifact@v3
+              with: 
+                name: test
+                path: path/to/artifact/
+
