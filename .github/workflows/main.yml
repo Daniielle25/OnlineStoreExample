@@ -13,7 +13,7 @@ jobs:
     - name: Run scan
       uses: PortSwigger/dastardly-github-action@main
       with: 
-        target-url: 'https://www.josiahjwood.com/'
+        target-url: 'http://localhost:3000'
     - name: Publish report
       uses: mikepenz/action-junit-report@v3
       with:
