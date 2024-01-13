@@ -1,7 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-//axios.defaults.baseURL = import.meta.env.VITE_API_URL; 
-axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'http://localhost:5000/api/'; 
 
 const responseBody = (response: AxiosResponse) => response.data; 
 
@@ -25,17 +24,9 @@ const TestErrors = {
     getValidationError: () => requests.get('buggy/validation-error'), 
 }
 
-const Basket = {
-    get:() => requests.get('basket'), 
-    addItem: (productId: number, quantity = 1) => requests.post(`basket?productId=${productId}&quantity=${quantity}`, {}), 
-    deleteItem: (productId: number, quantity = 1) => requests.delete(`basket?productId=${productId}&quantity=${quantity}`), 
-
-}
-
 const agent = {
     Catalog, 
-    TestErrors, 
-    Basket
+    TestErrors
 }
 
 export default agent; 
