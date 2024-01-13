@@ -1,14 +1,15 @@
 version: 0.0
 os: linux
 files: 
-- source: client
-  destination: /var/www
-- source: deploy-scripts/webapi.service
-  destination: /etc/systemd/system
+- source: \BatchJob.exe
+  destination: c:\temp
+- source: \BatchJob.exe.config
+  destination: c:\temp\deploy-scripts
 
 hooks: 
   BeforeInstall: 
-    - location: deploy-scripts/before_install.sh
-      timeout: 120
-      runas: root
+    - location: \deploy-scripts\stop_application.ps1
+    - location: \deploy-scripts\clean_logs.ps1
+  AfterInstall: 
+    - location: \deploy-scripts\after_install.ps1
   
