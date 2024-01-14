@@ -13,7 +13,7 @@ jobs:
     - name: Run scan
       uses: PortSwigger/dastardly-github-action@main
       with: 
-        target-url: 'http://'
+        target-url: 'http://go.spotlightreporting.com'
     - name: Publish report
       uses: mikepenz/action-junit-report@v3
       with:
