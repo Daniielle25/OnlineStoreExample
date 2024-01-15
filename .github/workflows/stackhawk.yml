@@ -1,0 +1,26 @@
+app:
+  # -- An applicationId obtained from the StackHawk platform. --
+  applicationId: 03338400-d6a5-4780-9a11-9ed5dd37c045 # (required)
+  # -- The environment for the applicationId defined in the StackHawk platform. --
+  env: Development # (required)
+  # -- The url of your application to scan --
+  host: http://localhost:3000
+  
+name: StackHawk scan
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup stackhawk
+      run: brew install stackhawk/cli/hawk
+    - name: Setup and Save Credentials 
+      run: hawk init {{ HAWK_API_KEY }}
+
+    - name: next step
+    
